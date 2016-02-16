@@ -11,6 +11,7 @@ gem 'bootstrap_form'
 gem 'autoprefixer-rails'
 
 gem 'redcarpet'
+gem 'puma'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
