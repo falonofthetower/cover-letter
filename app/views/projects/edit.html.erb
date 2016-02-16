@@ -1,0 +1,17 @@
+<main>
+  <div class="column">
+    <%= bootstrap_form_for(@project) do |f| %>
+      <header>
+        <h1>Add new Project</h1>
+      </header>
+      <fieldset class="form-group">
+        <%= f.text_field :image_path, label: "image_path" %>
+        <%= f.text_area :text, size: "10x15", label: "Project Text" %>
+        <%= f.submit "Create Project", class: "btn btn-primary" %>
+        <%= link_to "Delete", { action: :destroy, id: @project.id }, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+      </fieldset>
+    <% end %>
+  </div>
+
+</main>
+

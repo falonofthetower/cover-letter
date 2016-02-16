@@ -1,0 +1,14 @@
+<div class="column">
+  <% @projects.each_with_index do |project, index| %>
+    <div class="image">
+      <figure><%= image_tag project.image_path %></figure>
+    </div>
+      <article class="text">
+        <p><%= markdown(project.text) %></p>
+      </article>
+      <% unless @projects.length - 1 == index %>
+        <hr />
+      <% end %>
+  <% end %>
+</div>
+
