@@ -43,7 +43,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'guard-rspec', require: false
   gem 'spring-commands-rspec'
-  gem 'byebug'
+  gem 'pry-byebug'
   gem 'pry'
 end
 
