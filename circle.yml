@@ -15,7 +15,7 @@ deployment:
     branch: staging
     commands:
       - heroku maintenance:on --app peter-at-candlescience-staging
-      - git fetch origin --unshallow
+        #      - git fetch origin --unshallow
       - git push git@heroku.com:peter-at-candlescience-staging.git $CIRCLE_SHA1:refs/heads/master
       - heroku run rake db:migrate --app peter-at-candlescience-staging
       - heroku maintenance:off --app peter-at-candlescience-staging
