@@ -1,0 +1,24 @@
+<section class="sign_in container">
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1">
+      <%= form_tag sessions_path, class: 'sign_in' do %>
+        <header>
+          <h1>Sign in</h1>
+        </header>
+        <fieldset>
+          <div class="form-group">
+            <%= label_tag :password %>
+            <div class="row">
+              <div class="col-sm-4">
+                <%= password_field_tag :password, nil, class: "form-control" %>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset class="form-group action">
+          <input type="submit" value="Sign in" class="btn btn-default" />
+        </fieldset>
+      <% end %>
+    </div>
+  </div>
+</section>
