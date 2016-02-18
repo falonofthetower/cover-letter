@@ -1,6 +1,6 @@
 <main>
   <div class="column">
-    <%= bootstrap_form_for(@project) do |f| %>
+    <%= bootstrap_form_for [:admin, @project] do |f| %>
       <header>
         <h1>Add new Project</h1>
       </header>

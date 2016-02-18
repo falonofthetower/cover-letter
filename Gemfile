@@ -48,10 +48,15 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'pry-byebug'
   gem 'pry'
+  gem 'capybara'
 end
 
 group :test do
   gem 'shoulda-matchers', '~> 3.1'
+  gem 'selenium-webdriver'
+  gem 'poltergeist'
+  gem 'launchy'
+  gem 'database_cleaner'
 end
 
 group :development do
