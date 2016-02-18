@@ -41,4 +41,17 @@ RSpec.describe SessionsController do
       end
     end
   end
+
+  describe "GET destroy" do
+    before do
+      session[:admin] = true
+      get :destroy
+    end
+
+    it "should set session[:admin] to nil" do
+      session[:admin] = true
+      get :destroy
+      expect(session[:admin]).not_to be_truthy
+    end
+  end
 end
