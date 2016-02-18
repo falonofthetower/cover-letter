@@ -5,10 +5,10 @@
         <%= link_to(image_tag("portrait.jpg", class: "img-circle portrait"), root_path, class: "navbar-brand") %>
       </a>
       <ul class="nav navbar-nav">
-        <li><%= link_to "Projects", "projects" %></li>
-        <li><%= link_to "Skills", "skills" %></li>
-        <li><%= link_to "History", "history" %></li>
-        <li><%= link_to "Why", "why" %></li>
+        <li><%= link_to "Projects", projects_path %></li>
+        <li><%= link_to "Skills", "#" %></li>
+        <li><%= link_to "History", "#" %></li>
+        <li><%= link_to "Why", "#" %></li>
         <% if session[:admin] %>
           <li><%= link_to "Sign Out", sign_out_path %></li>
         <% end %>
