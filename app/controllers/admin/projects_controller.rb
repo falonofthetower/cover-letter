@@ -1,4 +1,9 @@
 class Admin::ProjectsController < AdminController
+  def index
+    @projects = Project.all
+    @admin = true
+  end
+
   def new
     @project = Project.new
   end

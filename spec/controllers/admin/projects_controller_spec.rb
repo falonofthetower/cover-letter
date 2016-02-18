@@ -1,6 +1,19 @@
 require 'rails_helper'
 
 describe Admin::ProjectsController do
+  describe "GET index" do
+    it_behaves_like "requires admin" do
+      let(:action) { get :index}
+    end
+
+    it "sets the @project" do
+      sign_in
+      project = Fabricate(:project)
+      get :index
+      expect(assigns(:projects)).to eq([project])
+    end
+  end
+
   describe "GET new" do
     it_behaves_like "requires admin" do
       let(:action) { get :new}
