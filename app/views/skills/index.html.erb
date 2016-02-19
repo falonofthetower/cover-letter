@@ -1,0 +1,20 @@
+<div class="container-fluid">
+  <div class="column">
+    <div class="row">
+      <% if admin? %>
+        <h3><%= link_to "New Skill", new_admin_skill_path %><h3>
+      <% end %>
+      <% @skills.each_with_index do |skill, index| %>
+        <div class="col-xs-12 col-md-6">
+          <% if admin? %>
+            <%= link_to "Edit", edit_admin_skill_path(skill) %>
+          <% end %>
+          <article class="text">
+            <h2><%= skill.title %></h2>
+            <pre><%= skill.text %></pre>
+          </article>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
