@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :projects, only: [:index]
   resources :skills, only: [:index]
+  resources :histories, only: [:index]
   get "ui(/:action)", controller: "ui"
   resources :sessions, only: [:new, :create]
   get 'sign_out', to: "sessions#destroy"
@@ -10,5 +11,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :projects, only: [:new, :create, :edit, :update, :destroy]
     resources :skills, only: [:new, :create, :edit, :update, :destroy]
+    resources :histories, only: [:new, :create, :edit, :update, :destroy]
   end
 end
