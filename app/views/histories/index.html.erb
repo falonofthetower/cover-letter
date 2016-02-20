@@ -1,0 +1,18 @@
+<h1>History</h1>
+<div class="column">
+  <% if admin? %>
+    <h3><%= link_to "New History", new_admin_history_path %><h3>
+  <% end %>
+  <% @histories.each_with_index do |history, index| %>
+    <% if admin? %>
+      <%= link_to "Edit", edit_admin_history_path(history) %>
+    <% end %>
+    <article class="text">
+      <h2><%= history.subject %></h2>
+      <p><%= history.text %></p>
+    </article>
+    <% unless @histories.length - 1 == index %>
+      <hr />
+    <% end %>
+  <% end %>
+</div>
