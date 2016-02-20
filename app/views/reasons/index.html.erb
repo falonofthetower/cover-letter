@@ -1,0 +1,22 @@
+<div class="column">
+  <div class="container">
+    <div class="row">
+      <% if admin? %>
+        <h3><%= link_to "New Reason", new_admin_reason_path %><h3>
+      <% end %>
+      <div class="col-lg-6 col-lg-offset-3 raisedbox">
+        <h2 class="why">Why You Should Definitely Hire Me</h2>
+        <div id="list">
+          <ol>
+            <% @reasons.each do |reason| %>
+            <% if admin? %>
+              <%= link_to "Edit", edit_admin_reason_path(reason) %>
+            <% end %>
+              <li><p><em><%= reason.header %></em><%= reason.text %></p></li>
+            <% end %>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

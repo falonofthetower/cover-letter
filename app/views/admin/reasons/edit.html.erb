@@ -1,0 +1,16 @@
+<main>
+  <div class="column">
+    <%= bootstrap_form_for [:admin, @reason] do |f| %>
+      <header>
+        <h1>Add new reason</h1>
+      </header>
+      <fieldset class="form-group">
+        <%= f.text_field :header, label: "Header" %>
+        <%= f.text_area :text, size: "10x15", label: "Reason Text" %>
+        <%= f.submit "Save Edits", class: "btn btn-primary" %>
+        <%= link_to "Delete Reason", { action: :destroy, id: @reason.id }, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+      </fieldset>
+    <% end %>
+  </div>
+</main>
+
