@@ -1,1 +1,18 @@
-<%= render "shared/display_projects" %>
+<div class="column">
+  <% if admin? %>
+    <h3><%= link_to "New Project", new_admin_project_path %><h3>
+  <% end %>
+  <% @projects.each_with_index do |project, index| %>
+     <article class="text project-box">
+        <% if admin? %>
+          <%= link_to "Edit", edit_admin_project_path(project) %>
+        <% end %>
+        <h2><%= project.title %></h2>
+        <p><%= markdown(project.text) %></p>
+      </article>
+      <% unless @projects.length - 1 == index %>
+        <hr />
+      <% end %>
+  <% end %>
+</div>
+
