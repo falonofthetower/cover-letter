@@ -3,10 +3,7 @@
     <h3><%= link_to "New Project", new_admin_project_path %><h3>
   <% end %>
   <% @projects.each_with_index do |project, index| %>
-    <div class="image">
-      <figure><%= image_tag project.image_path %></figure>
-    </div>
-      <article class="text">
+     <article class="text project-box">
         <% if admin? %>
           <%= link_to "Edit", edit_admin_project_path(project) %>
         <% end %>
