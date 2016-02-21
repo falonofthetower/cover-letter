@@ -44,7 +44,7 @@ class Admin::ProjectsController < AdminController
 
   def project_params
     params.require(:project).permit(
-      :image_path,
+      :title,
       :text
     )
   end
