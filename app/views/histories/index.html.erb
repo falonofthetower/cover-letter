@@ -9,7 +9,7 @@
     <% end %>
     <article class="text">
       <h2><%= history.subject %></h2>
-      <p><%= history.text %></p>
+      <p><%= markdown(history.text) %></p>
     </article>
     <% unless @histories.length - 1 == index %>
       <hr />
