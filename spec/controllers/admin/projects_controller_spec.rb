@@ -18,7 +18,7 @@ describe Admin::ProjectsController do
       before do
         sign_in
         post :create, project: {
-          image_path: "logo.png",
+          title: "logo.png",
           text: "This the merry text has thus been typed into our browser"
         }
       end
@@ -73,10 +73,10 @@ describe Admin::ProjectsController do
 
   describe "PATCH update" do
     context "with invalid info" do
-      let(:project) { Fabricate(:project, image_path: "portrait.png", text: Faker::Lorem.sentence(5) )}
+      let(:project) { Fabricate(:project, title: "portrait.png", text: Faker::Lorem.sentence(5) )}
       before do
         sign_in
-        put :update, { id: project, project: Fabricate.attributes_for(:project, image_path: nil) }
+        put :update, { id: project, project: Fabricate.attributes_for(:project, title: nil) }
       end
 
       it "renders the edit template" do
@@ -85,16 +85,16 @@ describe Admin::ProjectsController do
 
       it "does not save the changes" do
         project.reload
-        expect(project.image_path).to eq("portrait.png")
+        expect(project.title).to eq("portrait.png")
       end
     end
 
     context "with valid inputs" do
-      let(:project) { Fabricate(:project, image_path: "portrait.png", text: Faker::Lorem.sentence(5) )}
+      let(:project) { Fabricate(:project, title: "portrait.png", text: Faker::Lorem.sentence(5) )}
 
       before do
         sign_in
-        put :update, { id: project, project: Fabricate.attributes_for(:project, image_path: "changed.jpg") }
+        put :update, { id: project, project: Fabricate.attributes_for(:project, title: "changed.jpg") }
       end
 
       it "redirects to the index page" do
@@ -103,7 +103,7 @@ describe Admin::ProjectsController do
 
       it "it saves the changes to the projec" do
         project.reload
-        expect(project.image_path).to eq("changed.jpg")
+        expect(project.title).to eq("changed.jpg")
       end
     end
   end

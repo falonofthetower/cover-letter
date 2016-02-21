@@ -12,7 +12,7 @@ RSpec.feature "Project CRUD", :js do
 
     click_link "Projects"
     click_link "New Project"
-    fill_in "image_path", with: "portrait.jpg"
+    fill_in "title", with: "portrait.jpg"
     fill_in "Project Text", with: text
     click_button "Create Project"
 
