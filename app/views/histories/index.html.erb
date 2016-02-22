@@ -7,7 +7,7 @@
     <% if admin? %>
       <%= link_to "Edit", edit_admin_history_path(history) %>
     <% end %>
-    <article class="text">
+    <article class="text project-box">
       <h2><%= history.subject %></h2>
       <p><%= markdown(history.text) %></p>
     </article>
