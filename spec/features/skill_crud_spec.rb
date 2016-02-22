@@ -1,33 +1,54 @@
 require 'rails_helper'
 
-RSpec.feature "Project CRUD", :js do
+RSpec.feature "Skill CRUD", :js do
   scenario "Admin creates, modifies, then destroys a skill" do
-    text = Faker::Lorem.sentence(5)
+    sign_in_admin
 
-    visit new_session_path
-    fill_in "password", with: ENV['SECRET']
-    click_button "Sign in"
+    skill = build_skill
+    create_skill(skill)
+    expect(page).to have_content(skill.title)
+    expect(page).to have_content(skill.text)
 
-    expect(page).to have_content("Welcome to Shangri-La")
+    edit_skill_text("BATMAN!")
 
-    click_link "Skills"
-    click_link "New Skill"
-    fill_in "title", with: Faker::Lorem.word
-    fill_in "Skill Text", with: text
-    click_button "Create Skill"
+    expect(page).to have_content("BATMAN!")
+    expect(page).to have_content("Skill updated")
 
-    expect(page).to have_content(text)
+    delete_skill
+    expect(page).not_to have_content("BATMAN!")
+    skill_1 = build_skill(1)
+    skill_2 = build_skill(2)
+    skill_3 = build_skill(3)
 
-    click_link "Edit"
-    fill_in "Skill Text", with: "New Text"
-    click_button "Save Edits"
+    create_skill(skill_2)
+    create_skill(skill_3)
+    create_skill(skill_1)
 
-    expect(page).to have_content("Skill Updated")
-    expect(page).to have_content("New Text")
-    click_link "Edit"
-    click_link "Delete Skill"
-    expect(page).to have_content("Another one bites the dust!")
-    visit skills_path
-    expect(page).not_to have_content("New Text")
+    expect(skill_1.title).to appear_before(skill_2.title)
+    expect(skill_2.title).to appear_before(skill_3.title)
   end
+end
+
+def edit_skill_text(new_text)
+  click_link "Edit"
+  fill_in "Skill Text", with: new_text
+  click_button "Update Skill"
+end
+
+def create_skill(skill)
+  click_link "Skills"
+  click_link "New Skill"
+  fill_in "title", with: skill.title
+  fill_in "Skill Text", with: skill.text
+  fill_in "Weight", with: skill.weight
+  click_button "Create Skill"
+end
+
+def delete_skill
+  click_link "Edit"
+  click_link "Delete Skill"
+end
+
+def build_skill(weight = "")
+  Fabricate.build(:skill, weight: weight)
 end

@@ -124,6 +124,9 @@ GEM
     notiffany (0.0.8)
       nenv (~> 0.1)
       shellany (~> 0.0)
+    orderly (0.0.3)
+      capybara (>= 1.1)
+      rspec (>= 2.14)
     pg (0.18.4)
     poltergeist (1.6.0)
       capybara (~> 2.1)
@@ -262,6 +265,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   launchy
+  orderly
   pg
   poltergeist
   pry

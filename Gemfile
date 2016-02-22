@@ -57,6 +57,7 @@ group :test do
   gem 'poltergeist'
   gem 'launchy'
   gem 'database_cleaner'
+  gem 'orderly'
 end
 
 group :development do

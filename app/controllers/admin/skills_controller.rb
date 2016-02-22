@@ -27,7 +27,7 @@ class Admin::SkillsController < AdminController
     @skill = Skill.find(params[:id])
     if @skill.update(skill_params)
       redirect_to skills_path
-      flash[:success] = "Skill Updated"
+      flash[:success] = "Skill updated"
     else
       render :edit
     end
@@ -45,7 +45,8 @@ class Admin::SkillsController < AdminController
   def skill_params
     params.require(:skill).permit(
       :title,
-      :text
+      :text,
+      :weight
     )
   end
 end

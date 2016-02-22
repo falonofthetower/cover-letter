@@ -45,6 +45,7 @@ class Admin::HistoriesController < AdminController
   def history_params
     params.require(:history).permit(
       :subject,
+      :weight,
       :text
     )
   end

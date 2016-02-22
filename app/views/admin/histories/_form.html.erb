@@ -1,0 +1,8 @@
+<%= bootstrap_form_for [:admin, @history] do |f| %>
+  <fieldset class="form-group">
+    <%= f.text_field :subject, label: "Subject" %>
+    <%= f.text_field :weight, label: "Weight" %>
+    <%= f.text_area :text, size: "10x15", label: "History Text" %>
+    <%= f.submit class: "btn btn-primary" %>
+  </fieldset>
+<% end %>
