@@ -2,32 +2,55 @@ require 'rails_helper'
 
 RSpec.feature "History CRUD", :js do
   scenario "Admin creates, modifies, then destroys a history" do
-    text = Faker::Lorem.sentence(5)
+    sign_in_admin
 
-    visit new_session_path
-    fill_in "password", with: ENV['SECRET']
-    click_button "Sign in"
 
-    expect(page).to have_content("Welcome to Shangri-La")
+    history = build_history
+    create_history(history)
+    expect(page).to have_content(history.subject)
+    expect(page).to have_content(history.text)
 
-    click_link "History"
-    click_link "New History"
-    fill_in "Subject", with: Faker::Lorem.word
-    fill_in "History Text", with: text
-    click_button "Create History"
-
-    expect(page).to have_content(text)
-
-    click_link "Edit"
-    fill_in "History Text", with: "New Text"
-    click_button "Save Edits"
-
+    edit_history_text("BATMAN!")
     expect(page).to have_content("History Updated")
-    expect(page).to have_content("New Text")
-    click_link "Edit"
-    click_link "Delete History"
+    expect(page).to have_content("BATMAN!")
+
+    delete_history
     expect(page).to have_content("Another one bites the dust!")
-    visit skills_path
-    expect(page).not_to have_content("New Text")
+    expect(page).not_to have_content("BATMAN!")
+
+    history_1 = build_history(1)
+    history_2 = build_history(2)
+    history_3 = build_history(3)
+
+    create_history(history_2)
+    create_history(history_3)
+    create_history(history_1)
+
+    expect(history_1.text).to appear_before(history_2.text)
+    expect(history_2.text).to appear_before(history_3.text)
   end
+end
+
+def edit_history_text(new_text)
+  click_link "Edit"
+  fill_in "History Text", with: new_text
+  click_button "Update History"
+end
+
+def create_history(history)
+  click_link "History"
+  click_link "New History"
+  fill_in "Subject", with: history.subject
+  fill_in "History Text", with: history.text
+  fill_in "Weight", with: history.weight
+  click_button "Create History"
+end
+
+def delete_history
+  click_link "Edit"
+  click_link "Delete History"
+end
+
+def build_history(weight = "")
+  Fabricate.build(:history, weight: weight)
 end
