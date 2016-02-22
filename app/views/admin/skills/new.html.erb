@@ -1,14 +1,8 @@
 <main>
   <div class="column">
-    <%= bootstrap_form_for [:admin, @skill] do |f| %>
-      <header>
-        <h1>Add new Project</h1>
-      </header>
-      <fieldset class="form-group">
-        <%= f.text_field :title, label: "title" %>
-        <%= f.text_area :text, size: "10x15", label: "Skill Text" %>
-        <%= f.submit "Create Skill", class: "btn btn-primary" %>
-      </fieldset>
-    <% end %>
+    <header>
+      <h1>Add new Project</h1>
+    </header>
+    <%= render "form", locals: @reason %>
   </div>
 </main>

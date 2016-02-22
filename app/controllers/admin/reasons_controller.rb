@@ -44,7 +44,8 @@ class Admin::ReasonsController < AdminController
   def reason_params
     params.require(:reason).permit(
       :header,
-      :text
+      :text,
+      :weight
     )
   end
 end

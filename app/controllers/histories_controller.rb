@@ -1,5 +1,5 @@
 class HistoriesController < ApplicationController
   def index
-    @histories = History.all
+    @histories = History.order(:weight)
   end
 end

@@ -1,5 +1,5 @@
 class SkillsController < ApplicationController
   def index
-    @skills = Skill.all
+    @skills = Skill.order(:weight)
   end
 end
