@@ -1,7 +1,18 @@
+article > h2
+  text-align: left
+  color: #00040a
+  font-family: 'GlacialIndifferenceRegular'
+  font-weight: normal
+  font-style: bold
+
 .column
-  max-width: 1600px
+  max-width: 1300px
   margin: 0 auto
   padding: 40px 50px
+  border: solid 1px
+
+.navbar-default .navbar-nav > li > a
+  color: #f9f7f7
 
 figure img
   max-width: 80%
@@ -14,6 +25,9 @@ figure img
 .text
   white-space: pre-line
   overflow-x: hidden
+  font-family: 'GlacialIndifferenceRegular'
+  font-weight: normal
+  font-style: normal
 
 body
   font: normal 20px "Avenir", Helvetica, Arial, sans-serif
@@ -21,17 +35,16 @@ body
 
 hr
   clear: both
-  color: #ff6600
-  background-color: #ff6600
+  background-color: black
   height: 1px
   border-width: 0
   margin-bottom: 50px
 
+hr.large
+  height: 3px
+  background-color: #3ACFEF
+
 .project-box
-  -moz-box-shadow: -12px -11px 5px #000000
-  -webkit-box-shadow: -12px -11px 5px #000000
-  box-shadow: -12px -11px 5px #000000
-  background-color: whitesmoke
   padding: 20px
 
 @media (max-width: 768px)
