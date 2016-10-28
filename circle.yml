@@ -6,6 +6,7 @@ deployment:
     branch: master
     commands:
       - heroku maintenance:on --app peter-karth-cover-letter
+      - git fetch origin --unshallow
       - git push git@heroku.com:peter-karth-cover-letter.git $CIRCLE_SHA1:refs/heads/master
       - heroku run rake db:migrate --app peter-karth-cover-letter
       - heroku maintenance:off --app peter-karth-cover-letter
