@@ -38,7 +38,9 @@ def edit_history_text(new_text)
 end
 
 def create_history(history)
+  expect(page).to have_content("History")
   click_link "History"
+  expect(page).to have_content("New History")
   click_link "New History"
   fill_in "Subject", with: history.subject
   fill_in "History Text", with: history.text

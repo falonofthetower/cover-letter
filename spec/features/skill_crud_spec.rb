@@ -36,7 +36,9 @@ def edit_skill_text(new_text)
 end
 
 def create_skill(skill)
+  expect(page).to have_content("Skills")
   click_link "Skills"
+  expect(page).to have_content("New Skill")
   click_link "New Skill"
   fill_in "title", with: skill.title
   fill_in "Skill Text", with: skill.text

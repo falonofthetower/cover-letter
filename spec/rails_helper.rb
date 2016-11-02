@@ -11,6 +11,7 @@ require 'capybara/poltergeist'
 require 'capybara/rspec'
 
 Capybara.javascript_driver = :poltergeist
+Capybara.default_max_wait_time = 10
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -61,6 +62,11 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+  config.after do |example|
+    if example.metadata[:type] == :feature and example.exception.present?
+      save_and_open_page
+    end
+  end
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)

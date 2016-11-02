@@ -1,22 +1,17 @@
 <div class="column">
-  <div class="container">
-    <div class="row">
-      <% if admin? %>
-        <h3><%= link_to "New Reason", new_admin_reason_path %><h3>
+  <% if admin? %>
+    <h3><%= link_to "New Reason", new_admin_reason_path %><h3>
+  <% end %>
+  <% @reasons.each_with_index do |reason, index| %>
+     <article class="text reason-box">
+        <% if admin? %>
+          <%= link_to "Edit", edit_admin_reason_path(reason) %>
+        <% end %>
+        <h2><%= reason.header %></h2>
+        <p><%= markdown(reason.text) %></p>
+      </article>
+      <% unless @reasons.length - 1 == index %>
+        <hr class="large" />
       <% end %>
-      <div class="col-lg-6 col-lg-offset-3 project-box">
-        <h2 class="why">Why You Should Hire Me</h2>
-        <div id="list">
-          <ol>
-            <% @reasons.each do |reason| %>
-            <% if admin? %>
-              <%= link_to "Edit", edit_admin_reason_path(reason) %>
-            <% end %>
-              <li><p><em><%= reason.header %></em><%= reason.text %></p></li>
-            <% end %>
-          </ol>
-        </div>
-      </div>
-    </div>
-  </div>
+  <% end %>
 </div>
