@@ -31,14 +31,14 @@ RSpec.feature "Reason CRUD", :js do
 end
 
 def edit_reason_text(new_text)
-  click_link "Edit"
+  find_and_click_link "Edit"
   fill_in "Reason Text", with: new_text
   click_button "Update Reason"
 end
 
 def create_reason(reason)
-  click_link "Why"
-  click_link "New Reason"
+  find_and_click_link "Why"
+  find_and_click_link "New Reason"
   fill_in "Header", with: reason.header
   fill_in "Reason Text", with: reason.text
   fill_in "Weight", with: reason.weight
@@ -46,8 +46,8 @@ def create_reason(reason)
 end
 
 def delete_reason
-  click_link "Edit"
-  click_link "Delete Reason"
+  find_and_click_link "Edit"
+  find_and_click_link "Delete Reason"
 end
 
 def build_reason(weight = "")

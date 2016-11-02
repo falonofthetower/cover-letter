@@ -37,8 +37,8 @@ def edit_project_text(new_text)
 end
 
 def create_project(project)
-  click_link "Projects"
-  click_link "New Project"
+  find_and_click_link "Projects"
+  find_and_click_link "New Project"
   fill_in "title", with: project.title
   fill_in "Project Text", with: project.text
   fill_in "Weight", with: project.weight
