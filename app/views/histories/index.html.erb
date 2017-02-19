@@ -1,7 +1,7 @@
 <h1>History</h1>
 <div class="column">
   <% if admin? %>
-    <h3><%= link_to "New History", new_admin_history_path %><h3>
+    <h3><%= link_to "New History", new_admin_history_path, id: "new_history" %><h3>
   <% end %>
   <% @histories.each_with_index do |history, index| %>
     <% if admin? %>
