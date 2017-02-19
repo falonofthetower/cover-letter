@@ -39,7 +39,9 @@ end
 
 def create_history(history)
   click_link "History"
-  click_link "New History"
+  expect(page).to have_link('New History')
+  find(:xpath, '//a[@id="new_history"]').trigger('click')
+  expect(page).to have_content('Add new History')
   fill_in "Subject", with: history.subject
   fill_in "History Text", with: history.text
   fill_in "Weight", with: history.weight

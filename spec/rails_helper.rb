@@ -11,7 +11,6 @@ require 'capybara/poltergeist'
 require 'capybara/rspec'
 
 Capybara.javascript_driver = :poltergeist
-
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -80,6 +79,11 @@ RSpec.configure do |config|
 
   config.after(:each) do
     DatabaseCleaner.clean
+  end
+  config.after do |example|
+    if example.metadata[:type] == :feature and example.exception.present?
+      save_and_open_page
+    end
   end
 end
 

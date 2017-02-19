@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <% if admin? %>
-        <h3><%= link_to "New Reason", new_admin_reason_path %><h3>
+        <h3><%= link_to "New Reason", new_admin_reason_path, id: "new_reason" %><h3>
       <% end %>
       <div class="col-lg-6 col-lg-offset-3 project-box">
         <h2 class="why">Why You Should Definitely Hire Me</h2>

@@ -38,8 +38,10 @@ end
 
 def create_project(project)
   click_link "Projects"
-  click_link "New Project"
-  fill_in "title", with: project.title
+  expect(page).to have_link('New Project')
+  find(:xpath, '//a[@id="new_project"]').trigger('click')
+  expect(page).to have_content('Add new Project')
+  fill_in "Title", with: project.title
   fill_in "Project Text", with: project.text
   fill_in "Weight", with: project.weight
   click_button "Create Project"
