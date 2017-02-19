@@ -28,7 +28,3 @@ This will:
 * How to run the test suite
 
 `bundle exec rspec`
-
-* Deployment instructions
-
-* ...
