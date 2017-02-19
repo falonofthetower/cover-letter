@@ -14,7 +14,8 @@ Instructions: https://github.com/teampoltergeist/poltergeist#installing-phantomj
 
 * Configuration
 
-First bundle with `bundle install`
+First bundle with `bundle install --without production` 
+(production requires postgres)
 
 There is a rake test to setup: `bundle exec rake cover_letter:setup`
 
