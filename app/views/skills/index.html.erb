@@ -2,7 +2,7 @@
   <div class="column">
     <div class="row">
       <% if admin? %>
-        <h3><%= link_to "New Skill", new_admin_skill_path %><h3>
+        <h3><%= link_to "New Skill", new_admin_skill_path, id: "new_skill" %><h3>
       <% end %>
       <% @skills.each_with_index do |skill, index| %>
         <div class="col-xs-12 col-md-6">

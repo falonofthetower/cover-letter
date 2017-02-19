@@ -37,8 +37,10 @@ end
 
 def create_skill(skill)
   click_link "Skills"
-  click_link "New Skill"
-  fill_in "title", with: skill.title
+  expect(page).to have_link('New Skill')
+  find(:xpath, '//a[@id="new_skill"]').trigger('click')
+  expect(page).to have_content('Add new Skill')
+  fill_in "Title", with: skill.title
   fill_in "Skill Text", with: skill.text
   fill_in "Weight", with: skill.weight
   click_button "Create Skill"

@@ -38,7 +38,9 @@ end
 
 def create_reason(reason)
   click_link "Why"
-  click_link "New Reason"
+  expect(page).to have_link('New Reason')
+  find(:xpath, '//a[@id="new_reason"]').trigger('click')
+  expect(page).to have_content('Add new Reason')
   fill_in "Header", with: reason.header
   fill_in "Reason Text", with: reason.text
   fill_in "Weight", with: reason.weight
