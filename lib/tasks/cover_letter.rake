@@ -9,5 +9,7 @@ namespace :cover_letter do
       f.puts "SECRET: '#{password}'"
     end
     puts "Password set in config/application.yml"
+    system 'bundle exec rake db:setup'
+    system 'bundle exec rspec'
   end
 end
