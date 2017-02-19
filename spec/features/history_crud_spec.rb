@@ -38,6 +38,7 @@ def edit_history_text(new_text)
 end
 
 def create_history(history)
+  expect(page).to have_content("History")
   click_link "History"
   expect(page).to have_link('New History')
   find(:xpath, '//a[@id="new_history"]').trigger('click')

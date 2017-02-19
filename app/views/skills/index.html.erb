@@ -1,20 +1,17 @@
-<div class="container-fluid">
-  <div class="column">
-    <div class="row">
+<div class="column">
+  <% if admin? %>
+    <h3><%= link_to "New Skill", new_admin_skill_path, id: "new_skill" %><h3>
+  <% end %>
+  <% @skills.each_with_index do |skill, index| %>
+    <article class="text skill-box">
       <% if admin? %>
-        <h3><%= link_to "New Skill", new_admin_skill_path, id: "new_skill" %><h3>
+        <%= link_to "Edit", edit_admin_skill_path(skill) %>
       <% end %>
-      <% @skills.each_with_index do |skill, index| %>
-        <div class="col-xs-12 col-md-6">
-          <% if admin? %>
-            <%= link_to "Edit", edit_admin_skill_path(skill) %>
-          <% end %>
-          <article class="text">
-            <h2><%= skill.title %></h2>
-            <pre class="prettyprint"><%= skill.text %></pre>
-          </article>
-        </div>
-      <% end %>
-    </div>
-  </div>
+      <h2><%= skill.title %></h2>
+      <p><%= markdown(skill.text) %></p>
+    </article>
+    <% unless @skills.length - 1 == index %>
+      <hr class="large" />
+    <% end %>
+  <% end %>
 </div>

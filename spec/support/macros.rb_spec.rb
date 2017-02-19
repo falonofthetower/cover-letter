@@ -8,3 +8,8 @@ def sign_in_admin
   click_button "Sign in"
   expect(page).to have_content("Welcome to Shangri-La")
 end
+
+def find_and_click_link(text)
+  expect(page).to have_content(text)
+  click_link text
+end

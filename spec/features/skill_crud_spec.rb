@@ -36,6 +36,7 @@ def edit_skill_text(new_text)
 end
 
 def create_skill(skill)
+  expect(page).to have_content("Skills")
   click_link "Skills"
   expect(page).to have_link('New Skill')
   find(:xpath, '//a[@id="new_skill"]').trigger('click')
