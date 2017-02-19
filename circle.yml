@@ -16,6 +16,7 @@ deployment:
     branch: staging
     commands:
       - heroku maintenance:on --app cover-letter-staging
+      - git fetch origin --unshallow
       - git push git@heroku.com:cover-letter-staging.git $CIRCLE_SHA1:refs/heads/master
       - heroku run rake db:migrate --app cover-letter-staging
       - heroku maintenance:off --app cover-letter-staging
