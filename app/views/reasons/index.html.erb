@@ -1,6 +1,6 @@
 <div class="column">
   <% if admin? %>
-    <h3><%= link_to "New Reason", new_admin_reason_path %><h3>
+    <h3><%= link_to "New Reason", new_admin_reason_path, id: "new_reason" %><h3>
   <% end %>
   <% @reasons.each_with_index do |reason, index| %>
      <article class="text reason-box">

@@ -1,4 +1,6 @@
 machine:
+  pre:
+    - sudo curl --output /usr/local/bin/phantomjs https://s3.amazonaws.com/circle-downloads/phantomjs-2.1.1
   ruby:
     version: 2.3.0
 deployment:
@@ -6,7 +8,15 @@ deployment:
     branch: master
     commands:
       - heroku maintenance:on --app peter-karth-cover-letter
-      - git fetch origin --unshallow
+      - heroku pg:backups capture --app peter-karth-cover-letter
       - git push git@heroku.com:peter-karth-cover-letter.git $CIRCLE_SHA1:refs/heads/master
       - heroku run rake db:migrate --app peter-karth-cover-letter
       - heroku maintenance:off --app peter-karth-cover-letter
+  staging:
+    branch: staging
+    commands:
+      - heroku maintenance:on --app cover-letter-staging
+      - git fetch origin --unshallow
+      - git push git@heroku.com:cover-letter-staging.git $CIRCLE_SHA1:refs/heads/master
+      - heroku run rake db:migrate --app cover-letter-staging
+      - heroku maintenance:off --app cover-letter-staging

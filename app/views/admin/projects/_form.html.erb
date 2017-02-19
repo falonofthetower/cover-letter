@@ -1,6 +1,6 @@
 <%= bootstrap_form_for [:admin, @project] do |f| %>
   <fieldset class="form-group">
-    <%= f.text_field :title, label: "title" %>
+    <%= f.text_field :title, label: "Title" %>
     <%= f.text_field :weight, label: "Weight" %>
     <%= f.text_area :text, size: "10x15", label: "Project Text" %>
     <%= f.submit class: "btn btn-primary" %>

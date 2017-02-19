@@ -1,6 +1,6 @@
 <div class="column">
   <% if admin? %>
-    <h3><%= link_to "New Project", new_admin_project_path %><h3>
+    <h3><%= link_to "New Project", new_admin_project_path, id: "new_project" %><h3>
   <% end %>
   <% @projects.each_with_index do |project, index| %>
      <article class="text project-box">
